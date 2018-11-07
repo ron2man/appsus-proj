@@ -12,6 +12,10 @@ body{
 }
 
 /* MOBILE FIRST */
+.main-container{
+/* display: grid; */
+/* height: 100vh; */
+}
 
 header{
     background-color: gold;
@@ -58,19 +62,33 @@ padding-bottom: 15px;
 }
 
 .emails {
-    display:inline-block;
     padding: 0 10px;
 }
 
 .emails .email {
-padding:15px 0;
-border-bottom: 1px solid goldenrod;
+    line-height: 1.4em;
+    padding:15px 0;
+    border-bottom: 1px solid goldenrod;
 }
 
 .email.unread {
     font-weight: bold;
 }
 
+.emails .email .head {
+    font-size:1.2em;
+    line-height:1.2em;
+    margin-bottom: 10px;
+}
+
+.emails .email .time{
+padding-right: 10px;
+}
+
+.emails .email .subject{
+    font-size:1.1em;
+    line-height: 1.1em;
+}
 
 
 
@@ -82,4 +100,27 @@ footer {
     background-color: black;
     color:white;
     text-align: center;
+}
+
+
+
+
+
+
+/* TABLET */
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {  }
+
+
+/* DESKTOP */
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+    .controller .compose {
+        border-radius: none;
+        padding: inherit;
+        position: inherit;
+    }
+
 }
