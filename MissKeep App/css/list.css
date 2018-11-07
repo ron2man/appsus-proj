@@ -1,9 +1,20 @@
-.notes-list{
+/* .notes-list{
 
-}
+} */
 
 .item-container{
     width: 150px;
     border: solid 1px burlywood;
     margin: 10px;
+    background: bisque;
+    border-radius: 25px;
+}
+
+.item-desc{
+    font-style: oblique;
+    list-style: cambodian;
+}
+
+.item-title{
+    text-align: center;
 }

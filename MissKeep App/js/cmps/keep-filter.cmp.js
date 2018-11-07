@@ -3,7 +3,7 @@ export default {
 
     template: `
             <form>
-                <input v-model="title" @blur="sendFilter" placeholder="Search for note"/>
+                <input class="filter-input" v-model="title" @blur="sendFilter" placeholder="Search for note"/>
             </form>
     
     `,

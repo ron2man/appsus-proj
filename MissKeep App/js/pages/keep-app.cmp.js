@@ -10,9 +10,10 @@ export default {
                 <h1>Keep remember</h1>
                 <img class="img-header" src="img/logo.png">
             </div>
-
-            <router-link to="/note/edit">Add New Note</router-link> 
-            <keep-filter @getFilter="getFilter"></keep-filter>
+            <div class="flex space-between">
+                <router-link to="/note/edit">Add New Note</router-link> 
+                <keep-filter @getFilter="getFilter"></keep-filter>
+            </div>
             <keep-list :notes="notesToShow"></keep-list>
             <section class="keep-footer">
                 <h6>coffeerigths 2018</h6>
