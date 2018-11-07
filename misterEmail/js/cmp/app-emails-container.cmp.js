@@ -4,11 +4,12 @@ export default {
     template: `
     <!-- EMAILS -->
         <section class="emails">
-        <single-email v-for="email in emails" :key="email.id" :email="email" @delete="deleteMail"></single-email>
+        <single-email v-for="email in emails" :key="email.id" :email="email" @changeRead="countUnreadeEmails" @delete="deleteMail"></single-email>
         </section>
     `,
     data() {
         return {
+            unReadEmails: 0,
             emails: [
                 {
                     id: 'ndalkngalkn',
@@ -62,18 +63,20 @@ export default {
             console.log('delete');
             var idx = this.emails.findIndex(email=> email.id === emailId);
             this.emails.splice(idx,1);
+        },
+        countUnreadeEmails(){
+            this.unReadEmails = this.emails.filter(email=> email.isRead === false);
+            // this.unReadEmails = this.emails.filter(email=> !email.isRead)
+            this.$emit('unReadCount',this.unReadEmails.length)
+            console.log(this.unReadEmails.length)
         }
 
     },
     computed:{
-        readStatus(){
-            console.log('readStatus')
-            var unReads = this.emails.filter(email=> !email.isRead)
-            this.$emit('unreadComputed',unReads.length)
-        }
+        
     },
     created(){
-        // this.readStatus();
+        this.countUnreadeEmails();
     },
     components: {
         singleEmail,

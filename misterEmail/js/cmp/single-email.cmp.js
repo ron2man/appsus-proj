@@ -61,10 +61,11 @@ export default {
             this.$emit('delete',this.email.id)
         },
         showEmailControl(){
-            this.controlClicked = !this.controlClicked; 
+            this.controlClicked = !this.controlClicked;
         },
         changeIsRead() {
             this.email.isRead = !this.email.isRead;
+            this.$emit('changeRead')
         }
     },
     created() {
