@@ -8,9 +8,7 @@ export default {
         <h1>{{(note.id)? 'Edit Note': 'Add Note'}}</h1>
         <form @submit.prevent="saveNote" class="edit-note flex column">
             <input type="text" v-model="note.title" placeholder="Change title">
-            <textarea rows="4" cols="50" name="comment" form="usrform">
-Enter text here...</textarea>
-            <!-- <input type="text" v-model="note.description" placeholder="Change description"> -->
+            <textarea rows="4" v-model="note.description" placeholder="Change description"></textarea>
             <button type="submit"> {{(note.id)? 'Save': 'Add'}}</button>
         </form>
     </section>
@@ -18,27 +16,34 @@ Enter text here...</textarea>
 
     data() {
         return {
-            note: { titel: '' },
-            note: {description : '' },
-            date:"8/11/2018"
+            note: {
+                title: '',
+                description: '',
+                date: "8/11/2018"
+            }
         }
     },
 
     created() {
         let noteId = this.$route.params.noteId
-        console.log('hi', noteId);
-        if (carId) {
-            noteService.getById(carId)
+        // console.log('hi', noteId);
+        if (noteId) {
+            noteService.getById(noteId)
                 .then(note => {
                     this.note = note
                 })
         }
 
     },
-    computed() {
-        return {
-            note: '',
-            title: '',
+    methods: {
+        saveNote() {
+            // console.log(this.note);
+            noteService.saveNote(this.note)
+            .then(() => {
+                console.log('Saved!');
+                this.$router.push('/keep');
+            })
         }
     }
+
 }

@@ -30,6 +30,8 @@ export default {
     created() {
         noteService.query()
             .then(res => {
+                console.log('res', res);
+                
                 this.notes = res
             })
     },
