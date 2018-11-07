@@ -7,16 +7,37 @@ export default {
     template: `
 <div  class="main-container">
         <header-comp></header-comp>
-        <controller-comp></controller-comp>
-        <emails-comp></emails-comp>
+        <controller-comp :unReadEmails="unReadEmails"></controller-comp>
+        <emails-comp @unReadCount="updateUnRead"></emails-comp>
         <footer-comp></footer-comp>
     </div>
-`,
-components: {
-    headerComp,
-    controllerComp,
-    emailsComp,
-    footerComp
-}
+`, data() {
+        return {
+            unReadEmails: 0,
+        }
+    },
+    components: {
+        headerComp,
+        controllerComp,
+        emailsComp,
+        footerComp
+    },
+    methods: {
+        updateUnRead(unreadEmails) {
+            // this.unreadEmails = unreadEmails;
+            this.unReadEmails = unreadEmails;
+            // console.log(this.unRead);
+
+            // console.log(unreadEmails);
+        }
+    },
+    computed: {
+        // computedUnread(){
+        //     console.log('computed somethig')
+        //     return this.unReadEmails;
+        // }
+            
+        
+    }
 
 }
