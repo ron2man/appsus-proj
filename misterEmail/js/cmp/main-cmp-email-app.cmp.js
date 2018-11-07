@@ -8,15 +8,24 @@ export default {
 <div  class="main-container">
         <header-comp></header-comp>
         <controller-comp></controller-comp>
-        <emails-comp></emails-comp>
+        <emails-comp @unReadCount="updateUnRead"></emails-comp>
         <footer-comp></footer-comp>
     </div>
-`,
+`,data(){
+    return{
+        unReadEmails: 0,
+    }
+},
 components: {
     headerComp,
     controllerComp,
     emailsComp,
     footerComp
+},
+methods:{
+    updateUnRead(unreadEmails){
+        console.log(unreadEmails);
+    }
 }
 
 }

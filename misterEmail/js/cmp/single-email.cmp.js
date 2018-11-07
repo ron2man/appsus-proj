@@ -1,41 +1,69 @@
 export default {
     props: ['email'],
     template: `
-            <div class="email" v-bind:class="unreadClass" v-on:click="changeStatus">
+            <div class="email" v-bind:class="unreadClass">
                 <div class="head flex space-between">
                     <h3>
                         <span class="time">{{calcPresTime}}</span>
-                        <span class="from">Yossi Yossi</span>
+                        <span class="from">{{email.from}}</span>
                     </h3>
-                    <!-- <span class="delete"><i class="fas fa-trash-alt"></i></span> -->
-                    <span class="delete"><i class="fas fa-ellipsis-h"></i></span>
+                    <span class="more" @click="showEmailControl"><i class="fas fa-ellipsis-h"></i></span>
                 </div>
-                <div class="subject">RE: Dear user - welcome to the app</div>
-                <div class="preview">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis excepturi odio eum?</div>
+                <div class="subject">{{email.subject}}</div>
+                <div class="preview">{{shortPreview}}</div>
+                <template v-if="controlClicked">
+                <div class="mail-control flex space-evenly">
+                <span @click="changeIsRead">{{readOrUnread}}</span>
+                <span title="delete" @click="deleteEmail"><i class="far fa-trash-alt"></i></span>
+                <span title="replay"><i class="fas fa-reply"></i></span>
+                <span><i class="fas fa-angle-double-right"></i></span>
+                </div>
+                </template>
             </div>
     `,
     data() {
         return {
-            // isUnread:true,
+            controlClicked: false,
         }
     },
     computed: {
+        shortPreview() {
+            return (`${this.email.body.substring(0, 100)}...`);
+        },
+        readOrUnread(){
+            return (this.email.isRead ? 'Mark as unread' : 'Mark as read')
+        },
         calcPresTime() {
             var timeStamp = +this.email.sentAt;
-            var sentDate = new Date(timeStamp).getDate();
-            var today = new Date().getDate();
-            if (sentDate === today) {
+
+            var sentYear = new Date(timeStamp).getFullYear()
+            var thisYear = new Date().getFullYear()
+
+            var sentMonth = new Date(timeStamp).getMonth();
+            var thisMonth = new Date().getMonth();
+
+            var sentDay = new Date(timeStamp).getDay();
+            var thisDay = new Date().getDay();
+
+
+            if (sentYear === thisYear && sentMonth === thisMonth && sentDay === thisDay) {
                 var hours = new Date(timeStamp).getHours();
                 var minutes = new Date(timeStamp).getMinutes();
                 return (hours + ':' + minutes)
-            } else return sentDate;
+            } else return (`${sentDay}/${sentMonth}/${sentYear}`)
         },
         unreadClass() {
             if (!this.email.isRead) return 'unread';
         },
     },
     methods: {
-        changeStatus() {
+        deleteEmail(){
+            this.$emit('delete',this.email.id)
+        },
+        showEmailControl(){
+            this.controlClicked = !this.controlClicked; 
+        },
+        changeIsRead() {
             this.email.isRead = !this.email.isRead;
         }
     },
