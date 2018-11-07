@@ -16,6 +16,7 @@ export default {
 `, data() {
         return {
             unReadEmails: 0,
+            
             emails:[],
             searchQuery: '',
             filter: {all:true,read:false,unread:false}
@@ -38,6 +39,12 @@ export default {
         setFilter(filter){
             this.filter = filter;
             console.log(filter)
+        },
+        countUnreadeEmails(){
+            this.unReadEmails = this.emails.filter(email=> email.isRead === false);
+            // this.unReadEmails = this.emails.filter(email=> !email.isRead)
+            
+            // console.log(this.unReadEmails.length)
         }
     },
     computed: {
