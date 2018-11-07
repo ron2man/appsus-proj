@@ -1,0 +1,85 @@
+@import url('reset.css');
+@import url('fonts.css');
+@import url('helpers.css');
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Alef', sans-serif;
+    font-size:18px;   
+}
+
+/* MOBILE FIRST */
+
+header{
+    background-color: gold;
+    color: black;
+    height: 80px;
+    line-height: 80px;
+}
+
+header > * {
+    padding: 0 20px;
+}
+
+header h1 {
+    font-size:1.5em;
+}
+
+.controller {
+padding-bottom: 15px;
+}
+
+.controller ul {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 15px;
+    background-color: black;
+    color: gold;
+}
+
+.controller input.search-mail {
+    width: 100%;
+    font-size:26px;
+    border:none;
+    border-bottom: 1px solid black;
+    /* display: block; */
+}
+.controller .compose {
+    background-color: black;
+    border-radius: 15px;
+    padding: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index:100;
+}
+
+.emails {
+    display:inline-block;
+    padding: 0 10px;
+}
+
+.emails .email {
+padding:15px 0;
+border-bottom: 1px solid goldenrod;
+}
+
+.email.unread {
+    font-weight: bold;
+}
+
+
+
+
+
+
+footer {
+    height: 40px;
+    line-height: 40px;
+    background-color: black;
+    color:white;
+    text-align: center;
+}
