@@ -50,6 +50,5 @@ function createWord(length) {
         var randChar = getRandChar();
         word += randChar;
     }
-
     return word;
 }

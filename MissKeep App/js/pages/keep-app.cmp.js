@@ -1,4 +1,4 @@
-import {noteService} from '../service/note.service.js';
+import { noteService } from '../service/note.service.js';
 import keepList from '../cmps/keep-list.cmp.js';
 import keepFilter from '../cmps/keep-filter.cmp.js';
 
@@ -11,14 +11,11 @@ export default {
                 <img class="img-header" src="img/logo.png">
             </div>
 
-            <section>
-                <button class="btn-add">Add New Note</button>
-            </section>
-            <keep-filter></keep-filter>
+            <router-link to="/note/edit">Add New Note</router-link> 
+            <keep-filter @getFilter="getFilter"></keep-filter>
             <keep-list :notes="notesToShow"></keep-list>
-          
             <section class="keep-footer">
-                <h6>cofferigths 2018</h6>
+                <h6>coffeerigths 2018</h6>
             </section>
         </section>
     `,
@@ -32,27 +29,33 @@ export default {
 
     created() {
         noteService.query()
-        .then(res => {
-            this.notes = res
-        })
+            .then(res => {
+                this.notes = res
+            })
     },
 
+    computed: {
+        notesToShow() {
+            if (!this.filter) return this.notes
 
-    
-    computed:{
-        notesToShow(){
-                if (!this.filter) return this.notes
+            return this.notes.filter(note =>note.title.includes(this.filter))
 
-                return this.filter.icludes()
-            console.log(this.notes);
-            return this.notes
         }
     },
-    
+    methods: {
+        getFilter(filter) {
+            this.filter = filter
+            console.log('got emit', filter);
+        },
+        addNewNote(){
+
+        }
+    },
+
     components: {
         keepList,
-        keepFilter
-
+        keepFilter,
+        
     },
 
 }
