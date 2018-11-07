@@ -69,6 +69,6 @@ export default {
         }
     },
     created() {
-        console.log(this.email)
+        // console.log(this.email)
     }
 }

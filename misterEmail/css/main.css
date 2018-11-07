@@ -61,6 +61,15 @@ padding-bottom: 15px;
     z-index:100;
 }
 
+.controller .un-read-filter{
+    padding:10px;
+    background-color: gold;
+}
+
+.controller .un-read-filter span{
+    cursor: pointer;
+}
+
 .emails {
     padding: 0 10px;
 }
@@ -86,6 +95,7 @@ padding-right: 10px;
 }
 
 .emails .email .subject{
+    padding-bottom: 10px;
     font-size:1.1em;
     line-height: 1.1em;
 }
