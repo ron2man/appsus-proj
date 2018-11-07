@@ -1,0 +1,15 @@
+
+
+.keep-head-container{
+    background: antiquewhite;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.img-header{
+    width: 100px;
+   height: 100px;
+   right: 20px;
+   border-radius: 20px;
+}
+
