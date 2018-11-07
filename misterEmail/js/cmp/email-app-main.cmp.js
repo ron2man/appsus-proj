@@ -9,7 +9,7 @@ export default {
     template: `
 <div  class="main-container">
         <header-comp></header-comp>
-        <controller-comp :unReadEmails="unReadEmails" @onInput="setSearchQuery"></controller-comp>
+        <controller-comp :unReadEmails="unReadEmails" @onInput="setSearchQuery" @setFilter="setFilter"></controller-comp>
         <email-list @unReadCount="updateUnRead" :emails="emailsToShow"></email-list>
         <footer-comp></footer-comp>
     </div>
@@ -18,6 +18,7 @@ export default {
             unReadEmails: 0,
             emails:[],
             searchQuery: '',
+            filter: {all:true,read:false,unread:false}
         }
     },
     components: {
@@ -33,6 +34,10 @@ export default {
         },
         updateUnRead(unreadEmails) {
             this.unReadEmails = unreadEmails;
+        },
+        setFilter(filter){
+            this.filter = filter;
+            console.log(filter)
         }
     },
     computed: {
@@ -41,7 +46,9 @@ export default {
             return this.emails.filter(email => 
                 email.subject.toUpperCase().includes(this.searchQuery.toUpperCase())
              || email.body.toUpperCase().includes(this.searchQuery.toUpperCase())
-             || email.from.toUpperCase().includes(this.searchQuery.toUpperCase()));
+             || email.from.toUpperCase().includes(this.searchQuery.toUpperCase())).filter(email =>
+                (this.filter.all && email) || (this.filter.read && email.isRead) || (this.filter.unread && !email.isRead) 
+                );
         } 
     },
     created(){

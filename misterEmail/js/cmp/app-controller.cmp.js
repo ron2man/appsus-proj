@@ -13,8 +13,9 @@ export default {
             </ul>
 
             <div class="un-read-filter flex space-between" v-if="this.isShowFilter">
-            Show: <span class="bold">All</span> | <span>Read</span> |
-             <span>Unread</span> <span @click="toggleFilter">X</span>
+            Show: <span @click="setFilter('all')" v-bind:class="[filter.all  ? 'bold' : '']">All</span> | 
+            <span @click="setFilter('read')" v-bind:class="[filter.read  ? 'bold' : '']">Read</span> |
+             <span @click="setFilter('unread')" v-bind:class="[filter.unread  ? 'bold' : '']">Unread</span> <span @click="toggleFilter">X</span>
             </div>
 
             <div class="search">
@@ -26,7 +27,11 @@ export default {
         return {
             searchInput: '',
             isShowFilter: false,
-            filter: 'all',
+            filter: {
+                all:true,
+                read:false,
+                unread:false}
+
         }
     },
     methods: {
@@ -36,6 +41,13 @@ export default {
         },
         toggleFilter(){
             this.isShowFilter = !this.isShowFilter;
+        },
+        setFilter(filter){
+            if (filter==='all') this.filter = {all:true,read:false,unread:false}
+            else if (filter==='read') this.filter = {all:false,read:true,unread:false}
+            else if (filter==='unread') this.filter = {all:false,read:false,unread:true}
+            // console.log(this.filter)
+            this.$emit('setFilter',this.filter);
         }
     },
     created() {
