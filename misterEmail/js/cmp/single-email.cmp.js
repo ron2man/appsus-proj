@@ -1,22 +1,25 @@
+import emailService from './../service/emails-service.js'
+
+
 export default {
+    name: 'single-email-preview',
     props: ['email'],
     template: `
             <div class="email" v-bind:class="unreadClass">
                 <div class="head flex space-between">
-                    <h3>
+                    <h3><router-link :to="emailIdLink">
                         <span class="time">{{calcPresTime}}</span>
-                        <span class="from">{{email.from}}</span>
+                        <span class="from">{{email.from}}</span></router-link>
                     </h3>
                     <span class="more" @click="showEmailControl"><i class="fas fa-ellipsis-h"></i></span>
                 </div>
-                <div class="subject">{{email.subject}}</div>
-                <div class="preview">{{shortPreview}}</div>
+                <div class="subject"><router-link :to="emailIdLink">{{email.subject}}</router-link></div>
+                <div class="preview"><router-link :to="emailIdLink">{{shortPreview}}</router-link></div>
                 <template v-if="controlClicked">
                 <div class="mail-control flex space-evenly">
-                <span @click="changeIsRead">{{readOrUnread}}</span>
+                <span @click.prevent="changeIsRead">{{readOrUnread}}</span>
                 <span title="delete" @click="deleteEmail"><i class="far fa-trash-alt"></i></span>
                 <span title="replay"><i class="fas fa-reply"></i></span>
-                <span><i class="fas fa-angle-double-right"></i></span>
                 </div>
                 </template>
             </div>
@@ -27,8 +30,12 @@ export default {
         }
     },
     computed: {
+        emailIdLink(){
+            return `/email/${this.email.id}`;
+        },
         shortPreview() {
-            return (`${this.email.body.substring(0, 100)}...`);
+            if (this.email.body.length < 100) return this.email.body;
+            else return (`${this.email.body.substring(0, 100)}...`);
         },
         readOrUnread(){
             return (this.email.isRead ? 'Mark as unread' : 'Mark as read')
@@ -58,17 +65,14 @@ export default {
     },
     methods: {
         deleteEmail(){
-            this.$emit('delete',this.email.id)
+            emailService.deleteEmail(this.email.id);
         },
         showEmailControl(){
             this.controlClicked = !this.controlClicked;
         },
         changeIsRead() {
             this.email.isRead = !this.email.isRead;
-            this.$emit('changeRead')
+            // this.$emit('changeRead')
         }
     },
-    created() {
-        // console.log(this.email)
-    }
 }

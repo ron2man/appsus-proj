@@ -1,59 +1,52 @@
-import emailService from './../service/emails-service.js'
+import appRoutes from './../service/app-routes.js'
 
 import headerComp from './app-header.cmp.js';
-import controllerComp from './app-controller.cmp.js';
-import emailList from './email-list.cmp.js';
 import footerComp from './app-footer.cmp.js';
 
+
+// TODO - ENTER ROUTER LINKS AND VIEW
+// TODO - BUILD ADD NEW EMAIL CMP
+
+
+Vue.use(VueRouter);
+const appRouter = new VueRouter({routes: appRoutes})
+
 export default {
+    name:'main-App',
     template: `
-<div  class="main-container">
+    <div  class="main-container">
         <header-comp></header-comp>
-        <controller-comp :unReadEmails="unReadEmails" @onInput="setSearchQuery" @setFilter="setFilter"></controller-comp>
-        <email-list @unReadCount="updateUnRead" :emails="emailsToShow"></email-list>
+        <router-view></router-view>
         <footer-comp></footer-comp>
     </div>
 `, data() {
         return {
-            unReadEmails: 0,
-            emails:[],
-            searchQuery: '',
-            filter: {all:true,read:false,unread:false}
+            emails: [],
         }
     },
+    router: appRouter,
     components: {
         headerComp,
-        controllerComp,
-        emailList,
         footerComp
     },
     methods: {
-        setSearchQuery(query){
-            this.searchQuery = query;
-            // console.log(query);
+        reciveEmail(email){
+            console.log('email:',email);
+            console.log('got new email - todo: send to DB, add id, add isRead=false')
         },
-        updateUnRead(unreadEmails) {
-            this.unReadEmails = unreadEmails;
+        deleteMail(emailId){
+            console.log('delete');
+            var idx = this.emails.findIndex(email=> email.id === emailId);
+            this.emails.splice(idx,1);
+            console.log('got delete req - todo: send to DB, and update emails')
         },
-        setFilter(filter){
-            this.filter = filter;
-            console.log(filter)
-        }
     },
-    computed: {
-        emailsToShow(){
-            // Filter By Search Query
-            return this.emails.filter(email => 
-                email.subject.toUpperCase().includes(this.searchQuery.toUpperCase())
-             || email.body.toUpperCase().includes(this.searchQuery.toUpperCase())
-             || email.from.toUpperCase().includes(this.searchQuery.toUpperCase())).filter(email =>
-                (this.filter.all && email) || (this.filter.read && email.isRead) || (this.filter.unread && !email.isRead) 
-                );
-        } 
+    computed: { 
+
     },
-    created(){
-        console.log('%c Email APP Main CMP Created','color:black;background-color:gold;font-size:1.2em');
-        this.emails = emailService.query();
+    created() {
+        console.log('%c  ', 'font-size: 176px; background: url(https://ih1.redbubble.net/image.15114079.5257/st%2Csmall%2C215x235-pad%2C210x230%2Cf8f8f8.lite-1u2.jpg) no-repeat;');
+        console.log('%c App Created Succusfully -> It\'s all good, man', 'color:black;background-color:gold;font-size:1.2em');
     }
 
 }

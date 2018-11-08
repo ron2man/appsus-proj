@@ -1,42 +1,27 @@
 import singleEmail from './single-email.cmp.js'
 
 export default {
+    name: 'email-list',
     props:['emails'],
     template: `
     <!-- EMAILS -->
         <section class="emails">
-        <single-email v-for="email in emails" :key="email.id" :email="email" @changeRead="countUnreadeEmails" @delete="deleteMail"></single-email>
+        <single-email v-for="email in emails" :key="email.id" :email="email"></single-email>
         </section>
     `,
     data() {
-        return {
-            unReadEmails: 0,
-            
-
+        return {         
         }
     },
     methods: {
-        getTimestamp() {
-            return new Date() + 30000;
-        },
-        deleteMail(emailId){
-            // console.log('delete');
-            var idx = this.emails.findIndex(email=> email.id === emailId);
-            this.emails.splice(idx,1);
-        },
-        countUnreadeEmails(){
-            this.unReadEmails = this.emails.filter(email=> email.isRead === false);
-            // this.unReadEmails = this.emails.filter(email=> !email.isRead)
-            this.$emit('unReadCount',this.unReadEmails.length)
-            // console.log(this.unReadEmails.length)
-        }
+        // getTimestamp() {
+        //     return new Date() + 30000;
+        // },
 
     },
-    computed:{
-        
+    computed:{       
     },
     created(){
-        this.countUnreadeEmails();
     },
     components: {
         singleEmail,
