@@ -6,7 +6,8 @@ export default {
     <!-- CONTROLLER -->
         <section class="controller">
             <ul class="flex space-between fx-align-center">
-                <li class="compose"><i class="far fa-plus-square"></i> New</li>
+            
+                <li class="compose"><router-link to="/new"><i class="far fa-plus-square"></i> New</router-link></li>
                 <li @click="toggleSort"><i class="fas fa-sort"></i> Sort</li>
                 <li @click="toggleFilter"><i class="fas fa-filter"></i> Filter</li>
                 <li><i class="fas fa-inbox"></i> <span>{{unReadEmails}}</span></li>

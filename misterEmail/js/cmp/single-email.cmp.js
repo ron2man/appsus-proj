@@ -3,9 +3,9 @@ export default {
     template: `
             <div class="email" v-bind:class="unreadClass">
                 <div class="head flex space-between">
-                    <h3>
+                    <h3><router-link :to="emailIdLink">
                         <span class="time">{{calcPresTime}}</span>
-                        <span class="from">{{email.from}}</span>
+                        <span class="from">{{email.from}}</span></router-link>
                     </h3>
                     <span class="more" @click="showEmailControl"><i class="fas fa-ellipsis-h"></i></span>
                 </div>
@@ -13,7 +13,7 @@ export default {
                 <div class="preview">{{shortPreview}}</div>
                 <template v-if="controlClicked">
                 <div class="mail-control flex space-evenly">
-                <span @click="changeIsRead">{{readOrUnread}}</span>
+                <span @click="changeIsRead.prevent">{{readOrUnread}}</span>
                 <span title="delete" @click="deleteEmail"><i class="far fa-trash-alt"></i></span>
                 <span title="replay"><i class="fas fa-reply"></i></span>
                 <span><i class="fas fa-angle-double-right"></i></span>
@@ -27,6 +27,9 @@ export default {
         }
     },
     computed: {
+        emailIdLink(){
+            return `/email/${this.email.id}`;
+        },
         shortPreview() {
             return (`${this.email.body.substring(0, 100)}...`);
         },
@@ -59,6 +62,7 @@ export default {
     methods: {
         deleteEmail(){
             this.$emit('delete',this.email.id)
+            console.log('send emit up - delete')
         },
         showEmailControl(){
             this.controlClicked = !this.controlClicked;

@@ -5,7 +5,7 @@ export default {
     template: `
     <!-- EMAILS -->
         <section class="emails">
-        <single-email v-for="email in emails" :key="email.id" :email="email" @changeRead="countUnreadeEmails" @delete="deleteMail"></single-email>
+        <single-email v-for="email in emails" :key="email.id" :email="email" @changeRead="countUnreadeEmails" @delete="sendDeleteMailRequest"></single-email>
         </section>
     `,
     data() {
@@ -19,10 +19,12 @@ export default {
         getTimestamp() {
             return new Date() + 30000;
         },
-        deleteMail(emailId){
+        sendDeleteMailRequest(emailId){
             // console.log('delete');
-            var idx = this.emails.findIndex(email=> email.id === emailId);
-            this.emails.splice(idx,1);
+            // var idx = this.emails.findIndex(email=> email.id === emailId);
+            // this.emails.splice(idx,1);
+            console.log(emailId)
+            this.$emit('deleteMail',emailId);
         },
         countUnreadeEmails(){
             this.unReadEmails = this.emails.filter(email=> email.isRead === false);
