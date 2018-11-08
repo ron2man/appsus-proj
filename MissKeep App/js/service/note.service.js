@@ -63,6 +63,22 @@ var basiceNotes = [
         }
 
     },
+    {
+        type: 'note',
+        title: 'cook some food',
+        description: 'asian food this time',
+        location: 'resapy from veganisus.com',
+        created: '11/11/2018',
+        id: utilService.makeId(),
+        styleObject: {
+            background: '#a5927b',
+            fontSize: '20px',
+            'border-radius': '15px',
+            imgSrc: null
+        }
+
+    },
+ 
 ]
 
 

@@ -18,7 +18,10 @@ body{
 
 .nav-item{
 text-decoration: none;
+color: darkgoldenrod;
 }
+
+
 
 .img-logo{
     position: absolute;
