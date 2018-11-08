@@ -44,8 +44,9 @@ export default {
             @submit.prevent="saveNote" 
             class="edit-note flex column">
 
-            <input class="title-edit" type="text" v-model="note.title" placeholder="Change title">
-            <textarea class="text-edit" rows="4" v-model="note.description" placeholder="Change description"></textarea>
+            <input class="title-edit" type="text" v-model="note.title" placeholder="Choose title">
+            <textarea class="text-edit" rows="4" v-model="note.description" placeholder="Add description"></textarea>
+            <input class="title-edit" type="text" v-model="note.location" placeholder="Insert location">
             <span class="bcg-note">Choose your note color</span>
             <input
             v-if="note.type === 'img'" v-model="note.imgSrc" 

@@ -77,7 +77,7 @@ function saveNote(note) {
             } else {
                 // Add
                 note.id = utilService.makeId();
-                note.created = 'moment.js'
+                note.created = (moment().startOf('hour').fromNow() < 10 )? moment().startOf('hour').fromNow():moment().format('L'); 
                 notes.push(note);
             }
             // gNotes = notes;

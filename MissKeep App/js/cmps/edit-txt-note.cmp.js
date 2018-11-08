@@ -7,6 +7,7 @@ export default {
 
         <input class="title-edit" type="text" v-model="note.title" placeholder="Change title">
         <textarea class="text-edit" rows="4" v-model="note.description" placeholder="Change description"></textarea>
+        <input class="title-edit" type="text" v-model="note.title" placeholder="Change location">
         <span class="bcg-note">Choose your note color</span>
         <input type="txt" placeholder="Enter Image Url"
         v-if="note.type === 'img'" src="note.imgSrc" 
