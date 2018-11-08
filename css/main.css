@@ -1,0 +1,41 @@
+@import url('reset.css');
+
+/* RESET */
+body{
+    font-size:18px;
+    /* background-color: black; */
+}
+
+header {
+background-color:lightblue;
+text-align: center;
+}
+
+ h1{
+    font-size:2em;
+    line-height: 2em;
+}
+
+ h2 {
+    font-size:1.5em;
+    line-height: 1.5em;
+}
+ h3 {
+    color:blue;
+    font-size:1.2em;
+    line-height: 1.2em;
+}
+
+.mister-email{
+    border-bottom: 1px solid lightslategray;
+}
+
+/* TABLET */
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {  }
+
+
+/* DESKTOP */
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+}
