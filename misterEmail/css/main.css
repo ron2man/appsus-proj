@@ -134,6 +134,7 @@ padding-right: 10px;
 background-color:black;
 color:gold;
 padding:15px;
+line-height: 15px;
 }
 
 .email-editor .buttons{
@@ -149,7 +150,18 @@ padding:15px;
     cursor: pointer;
 }
 
+.email-details{
+    padding: 0 10px;
+}
 
+.email-details .time{
+    font-size:0.9em;
+}
+.email-details > *{
+    font-size:1.2em;
+    padding: 15px 0;
+    line-height: 1.2em;
+}
 
 footer {
     height: 40px;

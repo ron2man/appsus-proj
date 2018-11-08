@@ -70,9 +70,9 @@ var emailsDB = [
 
 function query() {
     return new Promise((resolve, reject)=>{
-        setTimeout(()=>{
+        // setTimeout(()=>{
             resolve(emailsDB);
-        }, 1000)
+        // }, 1000)
     });
 }
 
@@ -97,16 +97,22 @@ function getEmailById(emailId) {
 function nextEmail(emailId) {
     const emailIdx = emailsDB.findIndex(email => email.id === emailId);
     const email = (emailsDB[emailIdx+1])? emailsDB[emailIdx+1] : emailsDB[0]
-
+    
     return Promise.resolve(email)
-
+    
 }
 
+function updateIsRead(emailId) {
+    const email = emailsDB.find(email => email.id === emailId);
+    email.isRead = true;
+    
+}
 
 export default {
     deleteEmail,
     query,
     save,
     getEmailById,
-    nextEmail
+    nextEmail,
+    updateIsRead,
 }

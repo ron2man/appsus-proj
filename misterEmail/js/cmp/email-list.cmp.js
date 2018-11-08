@@ -6,7 +6,7 @@ export default {
     template: `
     <!-- EMAILS -->
         <section class="emails">
-        <single-email v-for="email in emails" :key="email.id" :email="email" @delete="sendDeleteMailRequest"></single-email>
+        <single-email v-for="email in emails" :key="email.id" :email="email"></single-email>
         </section>
     `,
     data() {
@@ -14,12 +14,10 @@ export default {
         }
     },
     methods: {
-        getTimestamp() {
-            return new Date() + 30000;
-        },
-        sendDeleteMailRequest(emailId){
-            this.$emit('deleteMail',emailId);
-        },
+        // getTimestamp() {
+        //     return new Date() + 30000;
+        // },
+
     },
     computed:{       
     },

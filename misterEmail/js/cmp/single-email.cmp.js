@@ -13,14 +13,13 @@ export default {
                     </h3>
                     <span class="more" @click="showEmailControl"><i class="fas fa-ellipsis-h"></i></span>
                 </div>
-                <div class="subject">{{email.subject}}</div>
-                <div class="preview">{{shortPreview}}</div>
+                <div class="subject"><router-link :to="emailIdLink">{{email.subject}}</router-link></div>
+                <div class="preview"><router-link :to="emailIdLink">{{shortPreview}}</router-link></div>
                 <template v-if="controlClicked">
                 <div class="mail-control flex space-evenly">
                 <span @click.prevent="changeIsRead">{{readOrUnread}}</span>
                 <span title="delete" @click="deleteEmail"><i class="far fa-trash-alt"></i></span>
                 <span title="replay"><i class="fas fa-reply"></i></span>
-                <span><i class="fas fa-angle-double-right"></i></span>
                 </div>
                 </template>
             </div>
@@ -73,7 +72,7 @@ export default {
         },
         changeIsRead() {
             this.email.isRead = !this.email.isRead;
-            this.$emit('changeRead')
+            // this.$emit('changeRead')
         }
     },
 }

@@ -6,7 +6,7 @@ export default {
 <section class="email-editor">
 <div class="header flex space-between">
 <h1>New Email</h1>
-<span>Back</span>
+<span><router-link to="/">Back</router-link></span>
 </div>
 <form @submit.prevent="emailSend">
 <input required type="text" v-model="email.from" placeholder=" To:">
