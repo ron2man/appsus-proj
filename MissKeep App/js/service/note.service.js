@@ -40,7 +40,7 @@ var basiceNotes = [
         created: '11/11/2018',
         id: utilService.makeId(),
         styleObject: {
-            background: 'red',
+            background: '#5f9ea0',
             fontSize: '20px',
             'border-radius': '15px',
             imgSrc: null
@@ -55,7 +55,7 @@ var basiceNotes = [
         created: '11/11/2018',
         id: utilService.makeId(),
         styleObject: {
-            background: 'green',
+            background: '#d28f5f',
             fontSize: '20px',
             'border-radius': '10px',
             imgSrc: null

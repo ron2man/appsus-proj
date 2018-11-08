@@ -3,4 +3,22 @@
 }
 .opts-container{
 width:100px;
+font-size: 30px;
 }
+
+.title-edit{
+    background: #b9d7cd;
+    margin-bottom: 10px;
+}
+
+.text-edit{
+    background: #b9d7cd;
+}
+
+.btn-add{
+    width: 60px;
+    margin: 0 auto;
+    margin-bottom: 170px;
+    background: burlywood;
+}
+

@@ -5,8 +5,8 @@ export default {
         @submit.prevent="saveNote" 
         class="edit-note flex column">
 
-        <input type="text" v-model="note.title" placeholder="Change title">
-        <textarea rows="4" v-model="note.description" placeholder="Change description"></textarea>
+        <input class="title-edit" type="text" v-model="note.title" placeholder="Change title">
+        <textarea class="text-edit" rows="4" v-model="note.description" placeholder="Change description"></textarea>
         <span class="bcg-note">Choose your note color</span>
         <input type="txt" placeholder="Enter Image Url"
         v-if="note.type === 'img'" src="note.imgSrc" 
@@ -15,7 +15,7 @@ export default {
          id="bcg-note" 
          name="body"
           v-model="note.styleObject.background" />
-        <button type="submit"> {{(!isNewNote)? 'Save': 'Add'}}</button>
+        <button class="btn-add" type="submit"> {{(!isNewNote)? 'Save': 'Add'}}</button>
     </form>
     `,
 
