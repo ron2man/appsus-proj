@@ -1,34 +1,64 @@
+/* RESET */
 @import url('reset.css');
 
-/* RESET */
+/* MOBILE FIRST */
+
+* {
+    box-sizing: border-box;
+}
+
+.hide-on-mobile{
+    display:none;
+}
+
 body{
     font-size:18px;
-    /* background-color: black; */
+    font-family: 'Nanum Gothic', sans-serif;
 }
+
 
 header {
-background-color:lightblue;
-text-align: center;
+    background-color:lightblue;
+    text-align: center;
 }
 
- h1{
-    font-size:2em;
-    line-height: 2em;
+.bold{font-weight: bold;}
+h1{
+font-size: 2em;
+line-height: 2em;
+}
+h2{
+    padding-bottom:10px;
 }
 
- h2 {
-    font-size:1.5em;
-    line-height: 1.5em;
-}
- h3 {
+h3{
     color:blue;
-    font-size:1.2em;
-    line-height: 1.2em;
+    font-weight: bold;
+    font-size:1.8em;
 }
 
-.mister-email{
-    border-bottom: 1px solid lightslategray;
+.mister-email{padding:10px;}
+.mister-email h3{margin-bottom:10px;}
+.mister-email p{font-size:1.5em;margin-bottom:10px;line-height: 1.5}
+.mister-email a.button {
+    background-color: #008CBA; /* Green */
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;    
 }
+/* .mister-email{
+    border-bottom: 1px solid lightslategray;
+} */
+
+/* .mister-email .text {max-width:40%;} */
 
 /* TABLET */
 /* // Medium devices (tablets, 768px and up) */
@@ -38,4 +68,7 @@ text-align: center;
 /* DESKTOP */
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
+    .hide-on-mobile{
+        display:inherit;
+    }
 }
