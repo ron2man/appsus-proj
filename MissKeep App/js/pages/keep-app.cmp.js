@@ -11,7 +11,7 @@ export default {
                 <img class="img-header" src="img/logo.png">
             </div>
             <div class="flex space-between">
-                <router-link class="add-link" to="/note/edit">Add New Note</router-link> 
+                <router-link class="add-link" to="/note/edit"><i class="fas fa-plus-square"></i></router-link> 
                 <keep-filter @getFilter="getFilter"></keep-filter>
             </div>
             <keep-list :notes="notesToShow"></keep-list>

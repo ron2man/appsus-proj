@@ -10,7 +10,7 @@ template:`
             in the form of pictures, words and even important lists to manage
             everyday tasks
         </h2>
-        <img class="img-reminder" src="img/garfild.png" />
+        <img class="img-reminder align-self-center" src="img/garfild.png" />
     </section>
 
 `
