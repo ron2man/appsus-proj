@@ -12,6 +12,7 @@ Vue.use(VueRouter);
 const appRouter = new VueRouter({routes: appRoutes})
 
 export default {
+    name:'main-App',
     template: `
     <div  class="main-container">
         <header-comp></header-comp>

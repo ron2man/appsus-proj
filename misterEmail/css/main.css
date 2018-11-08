@@ -130,7 +130,7 @@ padding-right: 10px;
     font-weight: normal;
 }
 
-.email-editor h1{
+.email-editor .header{
 background-color:black;
 color:gold;
 padding:15px;

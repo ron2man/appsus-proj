@@ -1,4 +1,8 @@
+import emailService from './../service/emails-service.js'
+
+
 export default {
+    name: 'single-email-preview',
     props: ['email'],
     template: `
             <div class="email" v-bind:class="unreadClass">
@@ -13,7 +17,7 @@ export default {
                 <div class="preview">{{shortPreview}}</div>
                 <template v-if="controlClicked">
                 <div class="mail-control flex space-evenly">
-                <span @click="changeIsRead.prevent">{{readOrUnread}}</span>
+                <span @click.prevent="changeIsRead">{{readOrUnread}}</span>
                 <span title="delete" @click="deleteEmail"><i class="far fa-trash-alt"></i></span>
                 <span title="replay"><i class="fas fa-reply"></i></span>
                 <span><i class="fas fa-angle-double-right"></i></span>
@@ -31,7 +35,8 @@ export default {
             return `/email/${this.email.id}`;
         },
         shortPreview() {
-            return (`${this.email.body.substring(0, 100)}...`);
+            if (this.email.body.length < 100) return this.email.body;
+            else return (`${this.email.body.substring(0, 100)}...`);
         },
         readOrUnread(){
             return (this.email.isRead ? 'Mark as unread' : 'Mark as read')
@@ -61,8 +66,7 @@ export default {
     },
     methods: {
         deleteEmail(){
-            this.$emit('delete',this.email.id)
-            console.log('send emit up - delete')
+            emailService.deleteEmail(this.email.id);
         },
         showEmailControl(){
             this.controlClicked = !this.controlClicked;
@@ -72,7 +76,4 @@ export default {
             this.$emit('changeRead')
         }
     },
-    created() {
-        // console.log(this.email)
-    }
 }

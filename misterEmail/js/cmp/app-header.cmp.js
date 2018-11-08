@@ -1,4 +1,5 @@
 export default {
+    name:'header-comp',
     template: `
     <!-- HEADER -->
         <header class="flex space-between fx-align-center">

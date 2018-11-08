@@ -5,10 +5,11 @@ import emailList from './email-list.cmp.js';
 
 
 export default {
+    name: 'email-container',
     template: `
     <section>
-    <controller-comp :unReadEmails="unReadEmails" @onInput="setSearchQuery" @setFilter="setFilter" @setSort="setSort"></controller-comp>
-    <email-list @unReadCount="updateUnRead" :emails="emailsToShow"></email-list>    
+    <controller-comp :unReadEmails="computedUnread" @onInput="setSearchQuery" @setFilter="setFilter" @setSort="setSort"></controller-comp>
+    <email-list :emails="emailsToShow"></email-list>    
     </section>
     `,
     data() {
@@ -29,16 +30,12 @@ export default {
             this.filter = filter;
         },
         setSort(sort) {
-            console.log('emit is here - ', sort)
             this.sortBy = sort;
         },
-        updateUnRead(unreadEmails) {
-            this.unReadEmails = unreadEmails;
-        },
-
     },
     computed: {
         emailsToShow() {
+
             // Filter By Search Query
             return this.emails.filter(email =>
                 email.subject.toUpperCase().includes(this.searchQuery.toUpperCase())
@@ -60,6 +57,10 @@ export default {
                 if (emailA.sentAt < emailB.sentAt) return 1;
                 return 0;
             }
+        },
+
+        computedUnread(){
+            return this.emails.filter(email=> email.isRead === false).length;
         }
     },
     components:{
@@ -67,6 +68,7 @@ export default {
         emailList,
     },
     created(){
-        this.emails = emailService.query();
+        emailService.query()
+            .then(emails => this.emails = emails)
     }
 }

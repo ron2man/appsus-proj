@@ -23,7 +23,7 @@ var emailsDB = [
         Hi Ron, You have a new mention from the 
         Coding Academy Sep 2018 workspace (ca-sep18.slack.com).`,                     
         isRead: true,
-        sentAt: 1541796432631
+        sentAt: 1541683064730,
     },
     {
         id: 'ndaegqt3q3',
@@ -67,11 +67,46 @@ var emailsDB = [
     },
 ]
 
-function query(){
-    return emailsDB;
+
+function query() {
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve(emailsDB);
+        }, 1000)
+    });
 }
 
-export default {
-    query
+function save(emailData) {
+    console.log(emailData);
+    emailData.id = utilService.makeId();
+    emailData.isRead = false;
+    emailsDB.push(emailData);
+    return Promise.resolve(emailData);
+}
 
+function deleteEmail(emailId){
+    var emailIdx = emailsDB.findIndex(email => email.id === emailId)
+    emailsDB.splice(emailIdx,1);
+}
+
+function getEmailById(emailId) {
+    var theEmail = emailsDB.find(email => email.id === emailId);
+    return Promise.resolve(theEmail)
+}
+
+function nextEmail(emailId) {
+    const emailIdx = emailsDB.findIndex(email => email.id === emailId);
+    const email = (emailsDB[emailIdx+1])? emailsDB[emailIdx+1] : emailsDB[0]
+
+    return Promise.resolve(email)
+
+}
+
+
+export default {
+    deleteEmail,
+    query,
+    save,
+    getEmailById,
+    nextEmail
 }
