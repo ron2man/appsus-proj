@@ -1,17 +1,28 @@
 
 @import 'helpers.css';
 @import 'keep.css';
-@import 'addnote.css';
 @import 'list.css';
 @import 'header.css';
 @import 'edit.css';
 @import 'home.css';
 @import 'about.css';
+@import 'footer.css';
 
 
 
 
 body{
-    background-color: rgb(136, 114, 114);
+    background: wheat;
+}
+
+
+.nav-item{
+text-decoration: none;
+}
+
+.img-logo{
+    position: absolute;
+    width: 50px;
+    right: 30px;
 }
 

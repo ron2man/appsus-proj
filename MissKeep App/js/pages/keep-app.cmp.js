@@ -15,9 +15,7 @@ export default {
                 <keep-filter @getFilter="getFilter"></keep-filter>
             </div>
             <keep-list :notes="notesToShow"></keep-list>
-            <section class="keep-footer">
-                <h6>coffeerigths 2018</h6>
-            </section>
+           
         </section>
     `,
 

@@ -40,9 +40,9 @@ var basiceNotes = [
         created: '11/11/2018',
         id: utilService.makeId(),
         styleObject: {
-            background: 'red',
-            fontSize: '13px',
-            'border-radius': '20px',
+            background: '#5f9ea0',
+            fontSize: '20px',
+            'border-radius': '15px',
             imgSrc: null
         }
 
@@ -55,7 +55,7 @@ var basiceNotes = [
         created: '11/11/2018',
         id: utilService.makeId(),
         styleObject: {
-            background: 'green',
+            background: '#d28f5f',
             fontSize: '20px',
             'border-radius': '10px',
             imgSrc: null
@@ -65,33 +65,6 @@ var basiceNotes = [
     },
 ]
 
-// function deleteTask(noteId, taskId){
-//     return storageService.load(Notes_KEY)
-//         .then(notes=>{
-            
-//             // if (taskId){
-//             //    var tasks =  notes.find(note=>note.type==='todo')
-//             //    var taskIdx = tasks.description.findIndex(task=> task.id === taskId)
-//             //    console.log(notes[0].description);
-//             //     notes[0].description.splice(taskIdx,1)
-//             //    return storageService.store(Notes_KEY, gNotes);
-
-//                console.log(taskIdx);
-            
-
-            
-//                 // tasks.findIndex(task=>{
-                    
-//                 //     taskId===task.id })
-                
-//                 // console.log(note);
-                
-//             }
-
-
-
-//         })
-// }
 
 
 function saveNote(note) {
@@ -110,6 +83,12 @@ function saveNote(note) {
             // gNotes = notes;
             return storageService.store(Notes_KEY, notes);
         });
+}
+
+function deletNote(notes){
+
+    return storageService.store(Notes_KEY, notes);
+
 }
 
 // this function retun promise of notes array  
@@ -144,30 +123,12 @@ function getNoteById(noteId) {
         .then(notes => {
             return notes.find(note => note.id === noteId)
         })
-
 }
 
-// function getNextNotekId(noteId) {
-//     const currNoteIdx = gNotes.findIndex(note =>noteId === note.id) 
-
-//     const nextNote = gNotes[currNoteIdx + 1] ? gNotes[currNoteIdx + 1] : gNotes[0]
-//     return Promise.resolve(nextNote)
-// }
-
-
-// function getPrevNoteId(noteId){
-//     const currBookIdx = gNotes.findIndex(book =>noteId === book.id) 
-
-// const prevNote = gNotes[currBookIdx - 1] ? gNotes[currBookIdx - 1] : gNotes[gNotes.length-1]
-// return Promise.resolve(prevNote)
-// }
 
 export const noteService = {
     query,
     getNoteById,
     saveNote,
-    // deleteTask,
- 
-    // getNextNotekId,
-    // getPrevNoteId
+    deletNote
 }

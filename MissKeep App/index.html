@@ -13,13 +13,16 @@
     <div id="app">
         <header>
             <nav class="nav-container">
-                <router-link exact to="/">Home</router-link> 
-                <router-link  to="/about">about</router-link> 
-                <router-link  to="/keep">keep</router-link> 
+                <router-link class="nav-item" exact to="/">Home</router-link> | 
+                <router-link class="nav-item" to="/about">about</router-link> |
+                <router-link class="nav-item" to="/keep">keep</router-link> 
+                <img class="img-logo" src="img/navlogo.png">
             </nav>        
         </header>
         <router-view></router-view>
-
+        <section class="keep-footer">
+                <h6>coffeerigths 2018</h6>
+            </section>
     </div>
     <script src="lib/vue.js"></script>
     <script src="lib/vue-router.js"></script>
