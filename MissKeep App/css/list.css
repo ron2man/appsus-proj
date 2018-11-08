@@ -2,12 +2,15 @@
 
 } */
 
+
+.notes-list-container{
+    width: 100%;
+}
 .item-container{
-    width: 150px;
     border: solid 1px burlywood;
     margin: 10px;
     background: #ffe4c4;
-    border-radius: 25px;
+    width: 100%;
 }
 
 .item-desc{
@@ -33,4 +36,8 @@
     border-radius: 15px;
     align-self: center;
     margin-bottom: 5px;
+}
+
+.items-continer{
+    width: 96%;
 }

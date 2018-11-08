@@ -5,12 +5,12 @@ export default {
     name: 'keep-list',
     props: ['notes'],
     template: `
-        <section v-if="notes" class="notes-list-container flex wrap">
-                <div v-for="currNote in notes">
+        <section v-if="notes" class="notes-list-container flex wrap" >
+                <div class="items-continer" v-for="currNote in notes">
                     
                     <div v-if="currNote.type!=='todo'" class="item-container flex column" :style="currNote.styleObject">
                         <ul class="item-opts flex flex-end">
-                        <i @click="removeNoteToTrash(currNote.idx)" class="fas fa-trash-alt"></i>
+                        <i @click="removeNoteToTrash(currNote.id)" class="fas fa-trash-alt"></i>
                             <li @click="editNote(currNote.id)"><i class="fas fa-edit"></i></li>
                             <li> <i class="fas fa-thumbtack"></i></li>
                         </ul>
@@ -24,9 +24,9 @@ export default {
                     </div>   
                     <div v-else> 
                         <section class="item-container flex column">
-                            <ul class="item-opts flex flex-end">
-                                <li @click="editNote(currNote.id)"><i class="fas fa-edit"></i></li>
-                            </ul>
+                            <!-- <ul class="item-opts flex flex-end"> -->
+                                <!-- <li @click="editNote(currNote.id)"><i class="fas fa-edit"></i></li> -->
+                            <!-- </ul> -->
                             <h3 class="item-title">{{currNote.title}}</h3>               
                             <ul class="item-desc">
                                 <li 
@@ -43,18 +43,28 @@ export default {
 
     methods: {
         editNote(currNoteId) {
-            // console.log('currNote:', currNoteId);
-
+            console.log('currNote:', currNoteId);
             this.$router.push(`/note/edit/${currNoteId}`)
         },
-  
+
         removeTaskToTrash(note, taskIdx) {
             note.description.splice(taskIdx, 1)
             noteService.saveNote(note)
         },
-        removeNoteToTrash(noteId){
+        removeNoteToTrash(noteId) {
+            // notes.splice(noteId)
             console.log(noteId);
+            console.log(this.notes);
+            var noteIdx = this.notes.findIndex(note => note.id === noteId)
+            this.notes.splice(noteIdx,1)
+            console.log(this.notes);
             
+
+            noteService.deletNote(this.notes)
+            // console.log(note);
+
+
+
         }
 
 

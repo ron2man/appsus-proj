@@ -3,7 +3,7 @@
 .keep-head-container{
     background: antiquewhite;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin: 10px 5px;
 }
 
 .img-header{
@@ -14,10 +14,20 @@
 }
 
 .filter-input{
-    background-color: yellow
+    background-color: rgb(160, 160, 94);
+background-color: bisque;
+    width: 200px;
+    margin-right: 5px;
+    height: 30px;
+    border-radius: 5px;
 }
+
+
+
 
 .add-link{
     color: antiquewhite;
+    font-size: 35px;
+    margin-left: 10px;
 }
 
