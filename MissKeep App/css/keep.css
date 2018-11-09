@@ -5,7 +5,9 @@
     border-radius: 20px;
     margin: 10px 5px;
 }
-
+.keep-head-container h1{
+margin-left: 10px;
+}
 .img-header{
     width: 100px;
    height: 100px;
@@ -20,6 +22,7 @@ background-color: bisque;
     margin-right: 5px;
     height: 30px;
     border-radius: 5px;
+    text-align: center;
 }
 
 

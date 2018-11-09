@@ -5,15 +5,16 @@
 
 .notes-list-container{
     width: 100%;
+
 }
 .item-container{
     border: solid 1px burlywood;
-    margin: 10px;
     background: #ffe4c4;
-    width: 100%;
+    line-height: 30px;
+    margin-bottom: 10px;
 }
 
-.item-desc{
+.note-item-desc{
     font-style: oblique;
     list-style: cambodian;
 }
@@ -28,7 +29,8 @@
     margin-top: 10px;
     margin-right: 10px;
     padding: 0;
-  
+    align-items: baseline;
+    width:100px;
 }
 
 .item-img{

@@ -6,11 +6,11 @@ export default {
     name: 'keep-app',
     template: `
         <section class="flex column">
-            <div class="keep-head-container flex space-between">
+            <div class="keep-head-container flex space-between align-center">
                 <h1>Keep remember</h1>
                 <img class="img-header" src="img/logo.png">
             </div>
-            <div class="flex space-between">
+            <div class="add-search-container flex space-around">
                 <router-link class="add-link" to="/note/edit"><i class="fas fa-plus-square"></i></router-link> 
                 <keep-filter @getFilter="getFilter"></keep-filter>
             </div>

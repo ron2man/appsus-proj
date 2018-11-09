@@ -5,17 +5,17 @@ export default {
     name: 'keep-list',
     props: ['notes'],
     template: `
-        <section v-if="notes" class="notes-list-container flex wrap" >
+        <section v-if="notes" class="notes-list-container flex wrap justify-content-center" >
                 <div class="items-continer" v-for="currNote in notes">
                     
-                    <div v-if="currNote.type!=='todo'" class="item-container flex column" :style="currNote.styleObject">
-                        <ul class="item-opts flex flex-end">
+                    <div v-if="currNote.type!=='todo'" class="item-container flex column align-itmes-end" :style="currNote.styleObject">
+                        <ul class="item-opts flex space-around">
                         <i @click="removeNoteToTrash(currNote.id)" class="fas fa-trash-alt"></i>
                             <li @click="editNote(currNote.id)"><i class="fas fa-edit"></i></li>
                             <li> <i class="fas fa-thumbtack"></i></li>
                         </ul>
-                        <h3 class="item-title">{{currNote.title}}</h3>
-                        <ul class="item-desc">
+                        <h3 class="item-title align-self-center">{{currNote.title}}</h3>
+                        <ul class="note-item-desc align-self-start">
                             <li>{{currNote.description}}</li>
                             <li>{{currNote.location}}</li>
                             <li>{{currNote.created}}</li>
@@ -28,7 +28,7 @@ export default {
                                 <!-- <li @click="editNote(currNote.id)"><i class="fas fa-edit"></i></li> -->
                             <!-- </ul> -->
                             <h3 class="item-title">{{currNote.title}}</h3>               
-                            <ul class="item-desc">
+                            <ul class="todo-item-desc">
                                 <li 
                                 v-for="(currDescription,idx) in currNote.description">
                                 {{currDescription.task}} 
