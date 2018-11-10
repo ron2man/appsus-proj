@@ -35,11 +35,15 @@ export default {
     name: 'edit-keep',
     template: `
      <section class="note-edit flex column align-center" v-if="note">
+            <button @click="backToList" class="btn-close">Go back</button>
         <h1>{{(!isNewNote)? 'Edit Note': 'Add Note'}}</h1>
          <opts-new-note 
             v-if="isNewNote"
             @setNoteType="setNoteType"></opts-new-note>
-        
+
+
+
+
         <form 
             @submit.prevent="saveNote" 
             class="edit-note flex column">
@@ -47,12 +51,15 @@ export default {
             <input class="title-edit" type="text" v-model="note.title" placeholder="Choose title">
             <textarea class="text-edit" rows="4" v-model="note.description" placeholder="Add description"></textarea>
             <input class="title-edit" type="text" v-model="note.location" placeholder="Insert location">
-            <span class="bcg-note">Choose your note color</span>
-            <input
+            <span class="bcg-note">Insert url to upload image</span>
+            <input class="title-edit"
             v-if="note.type === 'img'" v-model="note.imgSrc" 
             />
+            <span class="bcg-note">Choose your note color</span>
             <input type="color" id="bcg-note" name="body" value="#ffe4c4" @change="colorChoose($event.target.value)">
-            <button class="btn-add" type="submit"> {{(!isNewNote)? 'Save': 'Add'}}</button>
+            
+            <button class="btn-add" type="submit"> {{(!isNewNote)? 'Save': 'Add'}}</button>            
+
         </form>
     </section>
     `,
@@ -95,6 +102,10 @@ export default {
             if (type === 'img') this.note = {...imgNote};
             else if (type === 'todo') this.note = {...todoNote};
             else if (type === 'txt') this.note = {...txtNote};
+        },
+
+        backToList(){
+            this.$router.push('/keep')
         }
 
     },

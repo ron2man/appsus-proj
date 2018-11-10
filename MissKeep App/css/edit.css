@@ -5,6 +5,10 @@
 width:100px;
 font-size: 30px;
 }
+.opts-container:hover{
+cursor: pointer;
+}
+
 
 .title-edit{
     background: #b9d7cd;
@@ -18,9 +22,26 @@ font-size: 30px;
 }
 
 .btn-add{
+    
     width: 60px;
     margin: 0 auto;
+    margin-top:20px;
     margin-bottom: 170px;
     background: burlywood;
 }
+
+.btn-add:hover{
+    cursor: pointer;
+}
+
+.btn-close{
+    width: 90px;
+    background: burlywood;
+    align-self: flex-end;
+}
+
+.btn-close:hover{
+    cursor: pointer;
+}
+
 

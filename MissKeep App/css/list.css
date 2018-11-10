@@ -1,18 +1,16 @@
-/* .notes-list{
-
-} */
-
-
 .notes-list-container{
     width: 100%;
 
 }
+
 .item-container{
     border: solid 1px burlywood;
     background: #ffe4c4;
     line-height: 30px;
-    margin-bottom: 10px;
+    width: 45%;
+    margin: 10px;
 }
+
 
 .note-item-desc{
     font-style: oblique;
@@ -33,6 +31,19 @@
     width:100px;
 }
 
+.item-opts:hover{
+cursor: pointer;
+}
+
+.todo-trash:hover{
+   cursor: pointer;
+}
+
+.swal-modal{
+    background: antiquewhite;
+}
+
+
 .item-img{
     width: 90%;
     border-radius: 15px;
@@ -40,6 +51,65 @@
     margin-bottom: 5px;
 }
 
-.items-continer{
-    width: 96%;
-}
+
+
+
+@media (max-width:600px){
+
+    .notes-list-container{
+        width: 100%;
+
+    }
+    .item-container{
+        border: solid 1px burlywood;
+        background: #ffe4c4;
+        line-height: 30px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .note-item-desc{
+        font-style: oblique;
+        list-style: cambodian;
+    }
+
+    .item-title{
+        text-align: center;
+    }
+
+    .item-opts{
+        list-style: none;
+        margin: 0;
+        margin-top: 10px;
+        margin-right: 10px;
+        padding: 0;
+        align-items: baseline;
+        width:100px;
+    }
+
+    .item-opts:hover{
+    cursor: pointer;
+    }
+
+    .todo-trash:hover{
+    cursor: pointer;
+    }
+
+    .swal-modal{
+        background: antiquewhite;
+    }
+
+
+    .item-img{
+        width: 90%;
+        border-radius: 15px;
+        align-self: center;
+        margin-bottom: 5px;
+    }
+
+} 
+
+
+
+
+
